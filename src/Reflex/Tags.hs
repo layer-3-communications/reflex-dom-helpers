@@ -16,12 +16,12 @@ you'd normally add to 'el' to make.
 
 Here are a list of equivalences:
 
-* 'el "p"' to 'p_'
-* 'el\' "p"' to 'p\''
-* 'elAttr "p"' to 'pAttr'
-* 'elAttr\' "p"' to 'pAttr\''
-* 'elDynAttr "p"' to 'pDynAttr'
-* 'elDynAttr\' "p"' to 'pDynAttr\'"
+* @'el' "p"@ to 'p_'
+* @'el'' "p"@ to 'p''
+* @'elAttr' "p"@ to 'pAttr'
+* @'elAttr'' "p"@ to 'pAttr''
+* @'elDynAttr'@ "p"@ to 'pDynAttr'
+* @'elDynAttr@' "p"' to 'pDynAttr''
 -}
 
 module Reflex.Tags where

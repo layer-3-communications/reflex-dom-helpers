@@ -1,8 +1,8 @@
 name:                reflex-dom-helpers
 version:             0.1.0.0
-synopsis:            Initial project template from stack
+synopsis:            Element tag helpers for working with reflex-dom
 description:         Please see README.md
-homepage:            https://github.com/parsonsmatt/reflex-dom-helpers#readme
+homepage:            https://github.com/layer-3-communications/reflex-dom-helpers#readme
 license:             BSD3
 license-file:        LICENSE
 author:              Matthew Parsons
