@@ -15,13 +15,24 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Lib, Test
-  build-depends:       
+  exposed-modules:
+      Reflex.Tags
+    , Reflex.Tags.Simple
+    , Reflex.Tags.SimplePrime
+    , Reflex.Tags.Attr
+    , Reflex.Tags.AttrPrime
+    , Reflex.Tags.DynAttr
+    , Reflex.Tags.DynAttrPrime
+    , Reflex.Tags.TH
+  build-depends:
       base >= 4.7 && < 5
     , reflex
     , reflex-dom
     , template-haskell
   default-language:    Haskell2010
+  default-extensions:
+      TemplateHaskell
+      NoMonomorphismRestriction
 
 test-suite reflex-dom-helpers-test
   type:                exitcode-stdio-1.0
