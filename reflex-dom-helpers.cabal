@@ -2,15 +2,14 @@ name:                reflex-dom-helpers
 version:             0.1.0.0
 synopsis:            Element tag helpers for working with reflex-dom
 description:         Please see README.md
-homepage:            https://github.com/layer-3-communications/reflex-dom-helpers#readme
+homepage:            https://github.com/layer-3-communications/reflex-dom-helpers
 license:             BSD3
 license-file:        LICENSE
 author:              Matthew Parsons
 maintainer:          parsonsmatt@gmail.com
-copyright:           2016 Author name here
+copyright:           2016 Matthew Parsons
 category:            Web
 build-type:          Simple
--- extra-source-files:
 cabal-version:       >=1.10
 
 library
@@ -45,4 +44,4 @@ test-suite reflex-dom-helpers-test
 
 source-repository head
   type:     git
-  location: https://github.com/parsonsmatt/reflex-dom-helpers
+  location: https://github.com/layer-3-communications/reflex-dom-helpers
