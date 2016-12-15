@@ -16,11 +16,12 @@ module Reflex.Tags.TH where
 
 import Reflex.Dom.Widget
 import Control.Monad
+import qualified Data.Text as T
 
 import Language.Haskell.TH
 
 -- | A list of all HTML elements.
-elements :: [String]
+elements :: [T.Text]
 elements =
   [ "a"
   , "abbr"
@@ -148,11 +149,11 @@ elements =
 -- | Given a name for a function and a suffix, this function will generate
 -- a list of declarations. Each declaration will consist of the function applied
 -- to each of the HTML elements with the given suffix.
-gen :: Name -> String -> DecsQ
+gen :: Name -> T.Text -> DecsQ
 gen sym suffix =
     forM elements $ \element -> do
-        let name = mkName (element ++ suffix)
-        funD name [clause [] (normalB (appE (varE sym) (stringE element))) []]
+        let name = mkName (T.unpack element ++ T.unpack suffix)
+        funD name [clause [] (normalB (appE (varE sym) (stringE (T.unpack element)))) []]
 
 -- | Generate 'el' functions for all of the elements with an @_@ suffix.
 gen_ :: DecsQ
