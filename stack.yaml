@@ -2,14 +2,26 @@ flags: {}
 extra-package-dbs: []
 packages:
 - '.'
+- location:
+    git: https://github.com/reflex-frp/reflex
+    commit: 91299fce0bb2caddfba35af6608df57dd31e3690
+- location:
+    git: https://github.com/reflex-frp/reflex-dom
+    commit: 66b6d35773fcb337ab38ebce02c4b23baeae721e
+
 extra-deps:
-- cpphs-1.20.1
-- ghcjs-dom-0.2.3.1
-- haskell-src-exts-1.16.0.1
-- ref-tf-0.4
-- reflex-0.4.0
-- reflex-dom-0.3
-- syb-0.5.1
-- webkitgtk3-0.14.1.1
-- webkitgtk3-javascriptcore-0.13.1.2
-resolver: lts-5.13
+- prim-uniq-0.1.0.1
+- ref-tf-0.4.0.1
+- zenc-0.1.1
+
+resolver: lts-6.25
+compiler: ghcjs-0.2.0.9006025_ghc-7.10.3
+compiler-check: match-exact
+
+setup-info:
+  ghcjs:
+    source:
+      ghcjs-0.2.0.9006025_ghc-7.10.3:
+         url: http://ghcjs.tolysz.org/lts-6.25-9006025.tar.gz
+         sha1: 3c87228579b55c05e227a7876682c2a7d4c9c007
+
