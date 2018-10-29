@@ -159,6 +159,7 @@ gen sym suffix =
 
 elS = el . Text.pack
 elS' = el' . Text.pack
+elClassS = elClass . Text.pack
 elAttrS = elAttr . Text.pack
 elAttrS' = elAttr' . Text.pack
 elDynAttrS = elDynAttr . Text.pack
@@ -167,6 +168,9 @@ elDynAttrS' = elDynAttr' . Text.pack
 -- | Generate 'el' functions for all of the elements with an @_@ suffix.
 gen_ :: DecsQ
 gen_ = gen 'elS "_"
+
+genClass :: DecsQ
+genClass = gen 'elClassS "Class"
 
 -- | Generate 'el'' functions for all of the elements with an @'@ suffix.
 gen' :: DecsQ
