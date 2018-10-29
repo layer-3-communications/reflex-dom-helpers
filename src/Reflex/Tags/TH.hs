@@ -12,15 +12,18 @@ This module provide utilities for generating convenience functions for HTML
 elements.
 -}
 
+{-# LANGUAGE OverloadedStrings #-}
+
 module Reflex.Tags.TH where
 
 import Reflex.Dom.Widget
 import Control.Monad
 
 import Language.Haskell.TH
+import qualified Data.Text as Text
 
 -- | A list of all HTML elements.
-elements :: [String]
+elements :: [Text.Text]
 elements =
   [ "a"
   , "abbr"
