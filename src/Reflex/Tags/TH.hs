@@ -157,32 +157,38 @@ gen sym suffix =
         let name = mkName (element ++ suffix)
         funD name [clause [] (normalB (appE (varE sym) (stringE element))) []]
 
+elS = el . Text.pack
+elS' = el' . Text.pack
+genAttrS' = elAttr'. Text.pack
+genDynAttrS = elDynAttr . Text.pack
+genDynAttrS' = elDynAttr' . Text.pack
+
 -- | Generate 'el' functions for all of the elements with an @_@ suffix.
 gen_ :: DecsQ
-gen_ = gen '(el . Text.pack) "_"
+gen_ = gen 'elS "_"
 
 -- | Generate 'el'' functions for all of the elements with an @'@ suffix.
 gen' :: DecsQ
-gen' = gen '(el'  . Text.pack) "'"
+gen' = gen 'elS' "'"
 
 -- | Generate 'elAttr' functions for all of the elements with an @Attr@ suffix.
 genAttr :: DecsQ
-genAttr = gen '(elAttr . Text.pack) "Attr"
+genAttr = gen 'elAttrS "Attr"
 
 -- | Generate 'elAttr'' functions for all of the elements with an @Attr'@
 -- suffix.
 genAttr' :: DecsQ
-genAttr' = gen '(elAttr'. Text.pack) "Attr'"
+genAttr' = gen 'elAttrS' "Attr'"
 
 -- | Generate 'elDynAttr' functions for all of the elements with a @DynAttr@
 -- suffix.
 genDynAttr :: DecsQ
-genDynAttr = gen '(elDynAttr . Text.pack) "DynAttr"
+genDynAttr = gen 'elDynAttrS "DynAttr"
 
 -- | Generate 'elDynAttr'' functions for all of the elements with a @DynAttr'@
 -- suffix.
 genDynAttr' :: DecsQ
-genDynAttr' = gen '(elDynAttr' . Text.pack) "DynAttr'"
+genDynAttr' = gen 'elDynAttrS' "DynAttr'"
 
 -- | Generate all of the tags with all of the suffixes.
 genTags :: DecsQ
