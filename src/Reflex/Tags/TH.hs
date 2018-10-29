@@ -12,12 +12,15 @@ This module provide utilities for generating convenience functions for HTML
 elements.
 -}
 
+{-# LANGUAGE OverloadedStrings #-}
+
 module Reflex.Tags.TH where
 
 import Reflex.Dom.Widget
 import Control.Monad
 
 import Language.Haskell.TH
+import qualified Data.Text as Text
 
 -- | A list of all HTML elements.
 elements :: [String]
@@ -154,40 +157,40 @@ gen sym suffix =
         let name = mkName (element ++ suffix)
         funD name [clause [] (normalB (appE (varE sym) (stringE element))) []]
 
+elS = el . Text.pack
+elS' = el' . Text.pack
+elClassS = elClass . Text.pack
+elAttrS = elAttr . Text.pack
+elAttrS' = elAttr' . Text.pack
+elDynAttrS = elDynAttr . Text.pack
+elDynAttrS' = elDynAttr' . Text.pack
+
 -- | Generate 'el' functions for all of the elements with an @_@ suffix.
 gen_ :: DecsQ
-gen_ = gen 'el "_"
+gen_ = gen 'elS "_"
+
+genClass :: DecsQ
+genClass = gen 'elClassS "Class"
 
 -- | Generate 'el'' functions for all of the elements with an @'@ suffix.
 gen' :: DecsQ
-gen' = gen 'el' "'"
+gen' = gen 'elS' "'"
 
 -- | Generate 'elAttr' functions for all of the elements with an @Attr@ suffix.
 genAttr :: DecsQ
-genAttr = gen 'elAttr "Attr"
+genAttr = gen 'elAttrS "Attr"
 
 -- | Generate 'elAttr'' functions for all of the elements with an @Attr'@
 -- suffix.
 genAttr' :: DecsQ
-genAttr' = gen 'elAttr' "Attr'"
+genAttr' = gen 'elAttrS' "Attr'"
 
 -- | Generate 'elDynAttr' functions for all of the elements with a @DynAttr@
 -- suffix.
 genDynAttr :: DecsQ
-genDynAttr = gen 'elDynAttr "DynAttr"
+genDynAttr = gen 'elDynAttrS "DynAttr"
 
 -- | Generate 'elDynAttr'' functions for all of the elements with a @DynAttr'@
 -- suffix.
 genDynAttr' :: DecsQ
-genDynAttr' = gen 'elDynAttr' "DynAttr'"
-
--- | Generate all of the tags with all of the suffixes.
-genTags :: DecsQ
-genTags = do
-    a <- gen_
-    b <- gen'
-    c <- genAttr
-    d <- genAttr'
-    e <- genDynAttr
-    f <- genDynAttr'
-    return (mconcat [a, b, c, d, e, f])
+genDynAttr' = gen 'elDynAttrS' "DynAttr'"

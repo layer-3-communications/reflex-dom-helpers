@@ -1,6 +1,6 @@
 {-|
-Module      : Reflex.Tags.Attr
-Description : reflex-dom attribute tags
+Module      : Reflex.Tags.Simple
+Description : reflex-dom simple tags
 Copyright   : (c) Layer 3 Communications, 2016
                   Matthew Parsons, 2016
 License     : BSD3
@@ -10,12 +10,14 @@ Portability : POSIX
 
 This module is intended to be imported qualified.
 
-This module exports all of the HTML tags for the 'elAttr' function.
+This module exports all of the HTML tags for the 'el' function.
 -}
-module Reflex.Tags.Attr where
 
-import Prelude()
+module Reflex.Tags.SimpleClass where
+
+import qualified Prelude as P
+
+import Reflex.Dom.Widget (el)
 import Reflex.Tags.TH
-import Reflex.Dom.Widget
 
-genAttr
+genClass

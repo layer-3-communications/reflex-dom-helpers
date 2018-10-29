@@ -1,5 +1,5 @@
 name:                reflex-dom-helpers
-version:             0.1.0.0
+version:             0.2.0.0
 synopsis:            Element tag helpers for working with reflex-dom
 description:         Please see README.md
 homepage:            https://github.com/layer-3-communications/reflex-dom-helpers
@@ -18,6 +18,7 @@ library
       Reflex.Tags
     , Reflex.Tags.Simple
     , Reflex.Tags.SimplePrime
+    , Reflex.Tags.SimpleClass
     , Reflex.Tags.Attr
     , Reflex.Tags.AttrPrime
     , Reflex.Tags.DynAttr
@@ -25,9 +26,10 @@ library
     , Reflex.Tags.TH
   build-depends:
       base >= 4.7 && < 5
-    , reflex
-    , reflex-dom
+    , reflex >= 0.5 && < 0.6
+    , reflex-dom >= 0.4 && < 0.5
     , template-haskell
+    , text
   default-language:    Haskell2010
   default-extensions:
       TemplateHaskell
