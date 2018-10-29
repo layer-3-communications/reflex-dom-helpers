@@ -154,7 +154,7 @@ elements =
 gen :: Name -> String -> DecsQ
 gen sym suffix =
     forM elements $ \element -> do
-        let name = mkName (element ++ suffix)
+        let name = mkName ((Text.unpack element) ++ suffix)
         funD name [clause [] (normalB (appE (varE sym) (stringE element))) []]
 
 -- | Generate 'el' functions for all of the elements with an @_@ suffix.
