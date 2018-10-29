@@ -23,7 +23,7 @@ import Language.Haskell.TH
 import qualified Data.Text as Text
 
 -- | A list of all HTML elements.
-elements :: [Text.Text]
+elements :: [String]
 elements =
   [ "a"
   , "abbr"
@@ -154,35 +154,35 @@ elements =
 gen :: Name -> String -> DecsQ
 gen sym suffix =
     forM elements $ \element -> do
-        let name = mkName ((Text.unpack element) ++ suffix)
+        let name = mkName (element ++ suffix)
         funD name [clause [] (normalB (appE (varE sym) (stringE element))) []]
 
 -- | Generate 'el' functions for all of the elements with an @_@ suffix.
 gen_ :: DecsQ
-gen_ = gen 'el "_"
+gen_ = gen '(el . Text.pack) "_"
 
 -- | Generate 'el'' functions for all of the elements with an @'@ suffix.
 gen' :: DecsQ
-gen' = gen 'el' "'"
+gen' = gen '(el'  . Text.pack) "'"
 
 -- | Generate 'elAttr' functions for all of the elements with an @Attr@ suffix.
 genAttr :: DecsQ
-genAttr = gen 'elAttr "Attr"
+genAttr = gen '(elAttr . Text.pack) "Attr"
 
 -- | Generate 'elAttr'' functions for all of the elements with an @Attr'@
 -- suffix.
 genAttr' :: DecsQ
-genAttr' = gen 'elAttr' "Attr'"
+genAttr' = gen '(elAttr'. Text.pack) "Attr'"
 
 -- | Generate 'elDynAttr' functions for all of the elements with a @DynAttr@
 -- suffix.
 genDynAttr :: DecsQ
-genDynAttr = gen 'elDynAttr "DynAttr"
+genDynAttr = gen '(elDynAttr . Text.pack) "DynAttr"
 
 -- | Generate 'elDynAttr'' functions for all of the elements with a @DynAttr'@
 -- suffix.
 genDynAttr' :: DecsQ
-genDynAttr' = gen 'elDynAttr' "DynAttr'"
+genDynAttr' = gen '(elDynAttr' . Text.pack) "DynAttr'"
 
 -- | Generate all of the tags with all of the suffixes.
 genTags :: DecsQ
