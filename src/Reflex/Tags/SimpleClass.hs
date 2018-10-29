@@ -13,7 +13,7 @@ This module is intended to be imported qualified.
 This module exports all of the HTML tags for the 'el' function.
 -}
 
-module Reflex.Tags.Simple where
+module Reflex.Tags.SimpleClass where
 
 import qualified Prelude as P
 

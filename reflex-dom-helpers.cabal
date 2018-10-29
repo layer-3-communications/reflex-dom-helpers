@@ -18,6 +18,7 @@ library
       Reflex.Tags
     , Reflex.Tags.Simple
     , Reflex.Tags.SimplePrime
+    , Reflex.Tags.SimpleClass
     , Reflex.Tags.Attr
     , Reflex.Tags.AttrPrime
     , Reflex.Tags.DynAttr

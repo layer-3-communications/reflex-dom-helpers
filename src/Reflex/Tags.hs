@@ -31,4 +31,5 @@ import           Reflex.Tags.AttrPrime    as X
 import           Reflex.Tags.DynAttr      as X
 import           Reflex.Tags.DynAttrPrime as X
 import           Reflex.Tags.Simple       as X
+import           Reflex.Tags.SimpleClass  as X
 import           Reflex.Tags.SimplePrime  as X
