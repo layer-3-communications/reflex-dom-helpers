@@ -190,14 +190,3 @@ genDynAttr = gen 'elDynAttrS "DynAttr"
 -- suffix.
 genDynAttr' :: DecsQ
 genDynAttr' = gen 'elDynAttrS' "DynAttr'"
-
--- | Generate all of the tags with all of the suffixes.
-genTags :: DecsQ
-genTags = do
-    a <- gen_
-    b <- gen'
-    c <- genAttr
-    d <- genAttr'
-    e <- genDynAttr
-    f <- genDynAttr'
-    return (mconcat [a, b, c, d, e, f])
