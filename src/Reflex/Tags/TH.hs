@@ -159,9 +159,9 @@ gen sym suffix =
 
 elS = el . Text.pack
 elS' = el' . Text.pack
-genAttrS' = elAttr'. Text.pack
-genDynAttrS = elDynAttr . Text.pack
-genDynAttrS' = elDynAttr' . Text.pack
+elAttrS' = elAttr'. Text.pack
+elDynAttrS = elDynAttr . Text.pack
+elDynAttrS' = elDynAttr' . Text.pack
 
 -- | Generate 'el' functions for all of the elements with an @_@ suffix.
 gen_ :: DecsQ
