@@ -165,9 +165,9 @@ elAttrS' = elAttr' . Text.pack
 elDynAttrS = elDynAttr . Text.pack
 elDynAttrS' = elDynAttr' . Text.pack
 
--- | Generate 'el' functions for all of the elements with an @_@ suffix.
+-- | Generate 'el' functions for all of the elements with no suffix.
 gen_ :: DecsQ
-gen_ = gen 'elS "_"
+gen_ = gen 'elS ""
 
 genClass :: DecsQ
 genClass = gen 'elClassS "Class"
