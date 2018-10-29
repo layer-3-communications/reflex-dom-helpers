@@ -159,7 +159,8 @@ gen sym suffix =
 
 elS = el . Text.pack
 elS' = el' . Text.pack
-elAttrS' = elAttr'. Text.pack
+elAttrS = elAttr . Text.pack
+elAttrS' = elAttr' . Text.pack
 elDynAttrS = elDynAttr . Text.pack
 elDynAttrS' = elDynAttr' . Text.pack
 
