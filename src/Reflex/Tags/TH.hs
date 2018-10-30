@@ -204,5 +204,4 @@ genTagsSuffixed = do
     e <- genDynAttr "DynAttr"
     f <- genDynAttr' "DynAttr'"
     g <- genClass "Class"
-    h <- genClass' "Class'"
-    return (mconcat [a, b, c, d, e, f])
+    return (mconcat [a, b, c, d, e, f, g])
