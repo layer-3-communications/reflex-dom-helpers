@@ -24,7 +24,7 @@ Here are a list of equivalences:
 * @'elDynAttr@' "p"' to 'pDynAttr''
 -}
 
-module Reflex.Tags() where
+module Reflex.Tags where
 
 import Reflex.Tags.TH
 
