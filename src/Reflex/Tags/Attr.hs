@@ -8,7 +8,7 @@ Maintainer  : parsonsmatt@gmail.com
 Stability   : experimental
 Portability : POSIX
 
-This module is intended to be imported qualified.
+This module is intended to be imported qualified. Allows you to use tags with a prefix.
 
 This module exports all of the HTML tags for the 'elAttr' function.
 -}
@@ -18,4 +18,4 @@ import Prelude()
 import Reflex.Tags.TH
 import Reflex.Dom.Widget
 
-genAttr
+genAttr ""

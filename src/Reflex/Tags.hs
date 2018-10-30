@@ -24,12 +24,9 @@ Here are a list of equivalences:
 * @'elDynAttr@' "p"' to 'pDynAttr''
 -}
 
-module Reflex.Tags(module X) where
+module Reflex.Tags() where
 
-import           Reflex.Tags.Attr         as X
-import           Reflex.Tags.AttrPrime    as X
-import           Reflex.Tags.DynAttr      as X
-import           Reflex.Tags.DynAttrPrime as X
-import           Reflex.Tags.Simple       as X
-import           Reflex.Tags.SimpleClass  as X
-import           Reflex.Tags.SimplePrime  as X
+import Reflex.Tags.TH
+
+-- | generate all the tags with a suffix
+genTagsSuffixed

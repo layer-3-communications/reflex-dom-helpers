@@ -160,37 +160,53 @@ gen sym suffix =
 elS = el . Text.pack
 elS' = el' . Text.pack
 elClassS = elClass . Text.pack
+elClassS' = elClass' . Text.pack
 elAttrS = elAttr . Text.pack
 elAttrS' = elAttr' . Text.pack
 elDynAttrS = elDynAttr . Text.pack
 elDynAttrS' = elDynAttr' . Text.pack
 
 -- | Generate 'el' functions for all of the elements with an @_@ suffix.
-gen_ :: DecsQ
-gen_ = gen 'elS "_"
+gen_ :: String -> DecsQ
+gen_ = gen 'elS
 
-genClass :: DecsQ
-genClass = gen 'elClassS "Class"
+genClass :: String -> DecsQ
+genClass = gen 'elClassS
+
+genClass :: String -> DecsQ
+genClass = gen 'elClassS'
 
 -- | Generate 'el'' functions for all of the elements with an @'@ suffix.
-gen' :: DecsQ
-gen' = gen 'elS' "'"
+gen' :: String -> DecsQ
+gen' = gen 'elS'
 
 -- | Generate 'elAttr' functions for all of the elements with an @Attr@ suffix.
-genAttr :: DecsQ
-genAttr = gen 'elAttrS "Attr"
+genAttr :: String -> DecsQ
+genAttr = gen 'elAttrS
 
 -- | Generate 'elAttr'' functions for all of the elements with an @Attr'@
 -- suffix.
-genAttr' :: DecsQ
-genAttr' = gen 'elAttrS' "Attr'"
+genAttr' :: String -> DecsQ
+genAttr' = gen 'elAttrS'
 
 -- | Generate 'elDynAttr' functions for all of the elements with a @DynAttr@
 -- suffix.
-genDynAttr :: DecsQ
-genDynAttr = gen 'elDynAttrS "DynAttr"
+genDynAttr :: String -> DecsQ
+genDynAttr = gen 'elDynAttrS
 
--- | Generate 'elDynAttr'' functions for all of the elements with a @DynAttr'@
--- suffix.
-genDynAttr' :: DecsQ
-genDynAttr' = gen 'elDynAttrS' "DynAttr'"
+-- | Generate all of the tags with all of the suffixes.
+genDynAttr' :: String -> DecsQ
+genDynAttr' = gen 'elDynAttrS'
+
+-- | Generate all of the tags with all of the suffixes.
+genTagsSuffixed :: DecsQ
+genTagsSuffixed = do
+    a <- gen_ "_"
+    b <- gen' "'"
+    c <- genAttr "Attr"
+    d <- genAttr' "Attr'"
+    e <- genDynAttr "DynAttr"
+    f <- genDynAttr' "DynAttr'"
+    g <- genClass "Class"
+    h <- genClass' "Class'"
+    return (mconcat [a, b, c, d, e, f])
