@@ -8,7 +8,7 @@ Maintainer  : parsonsmatt@gmail.com
 Stability   : experimental
 Portability : POSIX
 
-This module is intended to be imported qualified.
+This module is intended to be imported qualified. Allows you to use tags with a prefix.
 
 This module exports all of the HTML tags for the 'el\'' function.
 -}
@@ -19,4 +19,4 @@ import qualified Prelude as P
 import Reflex.Dom.Widget (el')
 import Reflex.Tags.TH
 
-gen'
+gen' ""
