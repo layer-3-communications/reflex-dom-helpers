@@ -18,6 +18,7 @@ library
       Reflex.Tags
     , Reflex.Tags.Simple
     , Reflex.Tags.SimplePrime
+    , Reflex.Tags.SimpleClass
     , Reflex.Tags.Attr
     , Reflex.Tags.AttrPrime
     , Reflex.Tags.DynAttr
@@ -25,7 +26,7 @@ library
     , Reflex.Tags.TH
   build-depends:
       base >= 4.7 && < 5
-    , reflex
+    , reflex >= 0.5 && < 0.6
     , reflex-dom >= 0.4 && < 0.5
     , template-haskell
     , text == 1.2.*

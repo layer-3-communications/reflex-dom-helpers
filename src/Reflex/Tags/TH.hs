@@ -12,6 +12,8 @@ This module provide utilities for generating convenience functions for HTML
 elements.
 -}
 
+{-# LANGUAGE OverloadedStrings #-}
+
 module Reflex.Tags.TH where
 
 import Reflex.Dom.Widget
@@ -19,6 +21,7 @@ import Control.Monad
 import qualified Data.Text as T
 
 import Language.Haskell.TH
+import qualified Data.Text as Text
 
 -- | A list of all HTML elements.
 elements :: [T.Text]
@@ -155,40 +158,51 @@ gen sym suffix =
         let name = mkName (T.unpack element ++ T.unpack suffix)
         funD name [clause [] (normalB (appE (varE sym) (stringE (T.unpack element)))) []]
 
+elS = el . Text.pack
+elS' = el' . Text.pack
+elClassS = elClass . Text.pack
+elAttrS = elAttr . Text.pack
+elAttrS' = elAttr' . Text.pack
+elDynAttrS = elDynAttr . Text.pack
+elDynAttrS' = elDynAttr' . Text.pack
+
 -- | Generate 'el' functions for all of the elements with an @_@ suffix.
-gen_ :: DecsQ
-gen_ = gen 'el "_"
+gen_ :: String -> DecsQ
+gen_ = gen 'elS
+
+genClass :: String -> DecsQ
+genClass = gen 'elClassS
 
 -- | Generate 'el'' functions for all of the elements with an @'@ suffix.
-gen' :: DecsQ
-gen' = gen 'el' "'"
+gen' :: String -> DecsQ
+gen' = gen 'elS'
 
 -- | Generate 'elAttr' functions for all of the elements with an @Attr@ suffix.
-genAttr :: DecsQ
-genAttr = gen 'elAttr "Attr"
+genAttr :: String -> DecsQ
+genAttr = gen 'elAttrS
 
 -- | Generate 'elAttr'' functions for all of the elements with an @Attr'@
 -- suffix.
-genAttr' :: DecsQ
-genAttr' = gen 'elAttr' "Attr'"
+genAttr' :: String -> DecsQ
+genAttr' = gen 'elAttrS'
 
 -- | Generate 'elDynAttr' functions for all of the elements with a @DynAttr@
 -- suffix.
-genDynAttr :: DecsQ
-genDynAttr = gen 'elDynAttr "DynAttr"
-
--- | Generate 'elDynAttr'' functions for all of the elements with a @DynAttr'@
--- suffix.
-genDynAttr' :: DecsQ
-genDynAttr' = gen 'elDynAttr' "DynAttr'"
+genDynAttr :: String -> DecsQ
+genDynAttr = gen 'elDynAttrS
 
 -- | Generate all of the tags with all of the suffixes.
-genTags :: DecsQ
-genTags = do
-    a <- gen_
-    b <- gen'
-    c <- genAttr
-    d <- genAttr'
-    e <- genDynAttr
-    f <- genDynAttr'
-    return (mconcat [a, b, c, d, e, f])
+genDynAttr' :: String -> DecsQ
+genDynAttr' = gen 'elDynAttrS'
+
+-- | Generate all of the tags with all of the suffixes.
+genTagsSuffixed :: DecsQ
+genTagsSuffixed = do
+    a <- gen_ "_"
+    b <- gen' "'"
+    c <- genAttr "Attr"
+    d <- genAttr' "Attr'"
+    e <- genDynAttr "DynAttr"
+    f <- genDynAttr' "DynAttr'"
+    g <- genClass "Class"
+    return (mconcat [a, b, c, d, e, f, g])

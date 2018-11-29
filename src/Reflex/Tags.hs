@@ -28,4 +28,5 @@ module Reflex.Tags where
 
 import Reflex.Tags.TH
 
-genTags
+-- | generate all the tags with a suffix
+genTagsSuffixed
