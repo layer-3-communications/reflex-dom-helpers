@@ -26,8 +26,8 @@ library
     , Reflex.Tags.TH
   build-depends:
       base >= 4.7 && < 5
-    , reflex >= 0.5 && < 0.6
-    , reflex-dom >= 0.4 && < 0.5
+    , reflex >= 0.5 && < 0.7
+    , reflex-dom >= 0.4 && < 0.6
     , template-haskell
     , text
   default-language:    Haskell2010
