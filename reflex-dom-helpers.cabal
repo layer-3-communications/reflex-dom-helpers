@@ -1,7 +1,7 @@
 name:                reflex-dom-helpers
 version:             0.2.0.0
 synopsis:            Html tag helpers for reflex-dom
-description:         Allows one to write element as top level functions,
+description:         Allows one to write html tags as top level functions in reflex-dom,
                                      such as img instead of el "img".
 homepage:            https://github.com/layer-3-communications/reflex-dom-helpers
 license:             BSD3
